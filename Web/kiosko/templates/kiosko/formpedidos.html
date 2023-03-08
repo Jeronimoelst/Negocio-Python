@@ -1,0 +1,58 @@
+<h3> Agregar pedidos.</h3>
+{% load tags %} 
+<div> 
+    <form action="EditarGuadarPedidos" method="post">{% csrf_token %} 
+
+        <input name="id" value="{{pedido.0.0}}" style="display:none"/>
+        
+         {% with pedido.0.1|split:"/" as date %}
+        {{newdate}}
+        <label for="fecha" required>Fecha</label>
+        <input type="date"  id="fecha" required name="fecha" placeholder="Fecha" value={{date.2}}-{{date.0}}-{{date.1}}>
+        {% endwith %} 
+
+        <label for="Cantidad" required>Cantidad</label>
+        <input type="text" id="cantidad" name="cantidad" required placeholder="Cantidad" value={{pedido.0.2}}>
+      
+        <label for="producto" required>Producto</label>
+        <select id="producto" name="producto">
+      {% for articulo in articulos %}
+        <option value={{articulo.0}} {% if articulo.1 == pedido.0.3 %} selected {% endif %}>{{articulo.1}}</option>
+      {% endfor %}
+    </select>
+
+        <p>Recibido:</p>
+        <input type="radio" id="si_recibido" name="recibido" value="si" {% if pedido.0.4 == "Si" %} checked {% endif %}>
+        <label for="si">Si</label><br>
+        <input type="radio" id="no_recibido" name="recibido" value="no" {% if pedido.0.4 == "No" %} checked {% endif %}>
+        <label for="no">No</label><br>
+
+        <p>Pago:</p>
+        <input type="radio" id="si_pago" name="pago" value="si"  {% if pedido.0.5 == "Si" %} checked {% endif %}>
+        <label for="si">Si</label><br>
+        <input type="radio" id="no_pago" name="pago" value="no" {% if pedido.0.5 == "No" %} checked {% endif %}>
+        <label for="no">No</label><br>
+       
+
+        <label for="mediodepago" required>Medio de pago</label>
+        <input type="text" id="medio_pago" name="medio_de_pago" placeholder="Medio de pago" value={{pedido.0.6}}>
+
+        <label for="monto" required>Monto</label>
+        <input type="text" id="monto" name="monto" required placeholder="Monto de compra" value={{pedido.0.7}}>
+
+
+        <label for="parcial" required>Parcial</label>
+        <input type="text" id="parcial" name="parcial" required placeholder="Entrega parcial" value={{pedido.0.8}}>
+
+      
+        <label for="proveedor" required>Proveedor</label>
+        <select id="proveedor" name="proveedor">
+      {% for proveedor in proveedores %}
+        <option value={{proveedor.0}} {% if proveedor.1  == pedido.0.10 %} selected {% endif %}>{{proveedor.1}} </option>
+      {% endfor %}
+    </select> 
+
+
+        <input type="submit" value="Guardar">
+    </form>
+</div>

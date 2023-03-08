@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>Proveedores</title>
+    {% load static %}
+    {% load tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/form.css' %}">
+</head>
+
+<body>
+    {% include 'menu.html' %}
+    <div class="table-wrapper">
+    <div class="divscroll">
+        <table class="fl-table">
+            <thead>
+            <tr class="tr">
+
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Editar</th>
+
+            </tr>
+            </thead>
+
+             {% for proveedor in proveedores %}
+            <tr> 
+                <td>{{proveedor.2}}</td>
+
+            {% with  proveedor.3|checkctelefono as telefono %}
+                <td>{{telefono}}</td> 
+            {% endwith %}
+            <td>
+                    <form action="proveedores" method="get">
+                        <input type="text" value={{proveedor.1}} name="id_proveedor" id="id">
+                        <button>Editar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+
+
+    <div>
+        {% include 'formproveedores.html' %}
+    </div>
+    
+</body>
+
+</html>

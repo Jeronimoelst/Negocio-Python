@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/login.css' %}">
+</head>
+
+<body>
+    <div class="main">
+        <div class="login">
+            <div class="formc"></div>
+            <form method="POST" action="authenticate">{% csrf_token %}
+
+                <input type="text" name="nombre" placeholder="nombre">
+                <input type="password" name="password" placeholder="password">
+
+                <input type="submit" value="Log In" class="button"> {{ message }}
+
+            </form>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<html>
+
+<head>
+    <title>Reportes</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+</head>
+
+<body>
+    {% include 'menu.html' %}
+
+        <div class="table-wrapper">
+            <h2>Ventas</h2>
+        <div class="divscroll">
+        <table class="fl-table">
+        <thead>
+            <tr class="tr">
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+            {% for venta in ventas %}
+            <tbody class ="body">
+            <tr class="tr">
+                <td>{{venta.1}}</td>
+                <td>{{venta.2}}</td>
+                <td>{{venta.3}}</td>
+                <td>
+                    <form action="ventas" method="get">
+                        <input type="text" value={{venta.0}} name="id_venta" id="id">
+                        <button>Editar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+
+
+    
+
+    <div class="table-wrapper">
+    <h2>Resgistro de Precio</h2>
+        <div class="divscroll">
+        <table class="fl-table">
+        <thead>
+            <tr class="tr">                
+            <th>Producto</th>
+            <th>Precio de compra anterior</th>
+            <th>Precio de venta anterio</th>
+            </tr>
+            </thead>
+
+            {% for registro in registros %}
+            <tbody class ="body">
+            <tr class="tr">                
+                <td>{{registro.1}}</td>
+                <td>${{registro.2}}</td>
+                <td>${{registro.3}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    
+    <div class="table-wrapper">
+    <h2>Ganancias</h2>
+    <div class="divscroll">
+    <table class="fl-table">
+    <thead> 
+            <tr class="tr">
+                <th>Fecha</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+
+            {% for ganacia in ganancias %}
+            <tbody class ="body">
+            <tr class="tr">
+
+                <td>{{ganacia.1}}</td>
+                <td>${{ganacia.2}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+    </div>
+
+
+
+
+    <div class="table-wrapper">
+    <h2>Gastos</h2>
+    <div class="divscroll">
+        <table class="fl-table">
+            <thead>
+            <tr class="tr">
+
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Concepto</th>
+            </tr>
+            </thead>
+            {% for gasto in gastos %}
+            <tbody class ="body">
+            <tr class="tr">
+
+                <td>{{gasto.1}}</td>
+                <td>${{gasto.2}}</td>
+                <td>{{gasto.3}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <div class="table-wrapper">
+    <h2>Turnos</h2>
+    <div class="divscroll">
+        <table class="fl-table">
+            <thead>
+            <tr class="tr">
+
+                <th>Fecha</th>
+                <th>Pesronal</th>
+            </tr>
+            </thead>
+
+            {% for turno in turnos %}
+            <tbody class ="body">
+            <tr class="tr">
+
+                <td>{{turno.1}}</td>
+                <td>{{turno.2}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <title>Productos</title>
+    {% load static %}
+    {% load tags %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/form.css' %}">
+</head>
+
+
+<body>
+    {% include 'menu.html' %}
+    <div class="table-wrapper" >      
+    <div class="divscroll">
+    <table class="fl-table" >
+            <thead>
+            <tr class="tr">
+                <th>Nombre</th>
+                <th>Precio de compra</th>
+                <th>Precio de venta</th>
+                <th>Ganancia</th>
+                <th>Unidades</th>
+                <th>Editar</th>
+            </tr>
+            </thead>
+
+            {% for articulo in articulos %}
+            <tbody class ="body">
+            <tr class="tr">
+            
+            {% with  articulo.2|checknombre as nombre %} 
+                <td>{{nombre}}</td>
+            {% endwith %}                 
+            {% with  articulo.3|checkcompra as compra %} 
+                <td>{{compra}}</td>
+            {% endwith %} 
+
+            
+                <td>${{articulo.4}}</td>
+        
+
+            {% with  articulo.5|checkganancia as ganancia %} 
+                <td>{{ganancia}}</td>
+            {% endwith %} 
+            {% with  articulo.6|checkunidades as unidades %}
+                <td>{{unidades}}</td>
+            {% endwith %}
+                   <td>
+                    <form action="productos" method="get">
+                        <input type="text" value={{articulo.1}} name="id_producto" id="id">
+                        <button>Editar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+        <div class="form">
+            {% include 'formproductos.html' %}
+        </div>
+       
+</body>
+
+</html>

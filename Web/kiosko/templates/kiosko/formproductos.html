@@ -1,0 +1,22 @@
+<h3> Agregar y modificar.</h3>
+
+<div>
+    <form action="EditarGuadarProductos" method="post">{% csrf_token %} 
+
+        <input name="id" value="{{articulo.0.0}}" style="display:none" />
+        <label for="nombre" >Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="{{articulo.0.1}}" required>
+
+        <label for="preciocompra" >Precio de compra</label>
+        <input type="text" id="precio_compra" required name="precio_compra" placeholder="Precio de compra" value="{{articulo.0.2}}">
+
+        <label for="ganancia" > % Ganancia</label>
+        <input type="text" id="ganancia" name="ganancia" required placeholder="Ganancia" value="{{articulo.0.4}}">
+
+        <label for="unidades" > Unidades </label>
+        <input type="text" id="unidades" name="unidades" required placeholder="Unidades" value="{{articulo.0.5}}">
+
+        <input type="submit" value="Guardar">
+
+    </form>
+</div>

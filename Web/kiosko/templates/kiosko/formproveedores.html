@@ -1,0 +1,15 @@
+<h3> Agregar proveedores.</h3>
+{% load tags %} 
+<div>
+    <form action="editarGuadarProveedores" method="post">{% csrf_token %} 
+        <input name="id" value="{{proveedor.0.0}}" style="display:none"/>
+
+        <label for="nombre" required>Nombre</label>
+        <input type="text" id="nombre" required name="nombre" placeholder="Nombre" value="{{proveedor.0.1}}"/>
+
+        <label for="telefono" required>Telefono</label>
+        <input type="text" id="telefono" required name="telefono" placeholder="Telefono" value="{{proveedor.0.2}}"/>
+        
+        <input type="submit" value="Guardar"/> 
+    </form>
+</div>

@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Pagos</title>
+    {% load static %}
+    {% load tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/form.css' %}">
+</head>
+
+<body>
+    {% include 'menu.html' %}
+    <div class="table-wrapper">
+        <div class="divscroll">
+        <table class="fl-table">
+            <thead>
+            <tr class="tr">
+
+                <th>Monto</th>
+                <th>Fecha</th>
+                <th>Concepto</th>
+                <th>Editar</th>
+
+            </tr>
+            </thead>
+
+             {% for rendecion in pagos %}
+            <tbody class ="body">
+            <tr class="tr">
+            
+
+            {% with  rendecion.2|checkmonto as monto %}
+                <td>{{monto}}</td>
+            {% endwith %}
+
+                <td>{{rendecion.3}}</td>
+
+            {% with  rendecion.4|checkconcepto as concepto %}
+                <td>{{concepto}}</td> 
+            {% endwith %}
+            <td>
+                    <form action="pagos" method="get">
+                        <input type="text" value={{rendecion.1}} name="id_pago" id="id">
+                        <button>Editar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+     </div>
+    <div>
+        {% include 'formpagos.html' %}
+    </div>
+</body>
+
+</html>

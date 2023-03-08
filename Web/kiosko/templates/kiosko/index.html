@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>Inicio</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/index.css' %}">
+</head>
+
+<body>
+    {% include 'menu.html' %}
+    <div class="index">
+        {% load static %}
+        <div class="usuario">Hola {{usuario}}!!</div>
+        <img src="{% static 'kiosko/image/onepage_restaurant.jpg' %}"/> </div>
+</body>
+
+</html>

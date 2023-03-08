@@ -1,0 +1,18 @@
+img {
+    width: 100%;
+    position: fixed;
+}
+
+.index {
+    position: relative;
+}
+
+.usuario {
+    margin-top: 143px;
+    margin-left: 125px;
+    z-index: 999;
+    position: fixed;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xxx-large;
+    color: cornsilk;
+}

@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>Pedidos</title>
+{% load tags %} 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/form.css' %}">
+</head>
+
+<body>
+    {% include 'menu.html' %}
+    <div class="table-wrapper">
+    <div class="divscroll">
+        <table class="fl-table">
+            <thead>
+            <tr class="tr">
+
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Producto</th>
+                <th>Recibido</th>
+                <th>Pago</th>
+                <th>Medio de Pago</th>
+                <th>Monto</th>
+                <th>Parcial</th>
+                <th>Deuda</th>
+                <th>Proveedor</th>
+                <th>Editar</th>
+            </tr>
+            </thead>
+
+            {% for pedido in pedidos %}
+            <tbody class ="body">
+            <tr class="tr">
+            
+
+                <td>{{pedido.2}}</td>
+                <td>{{pedido.3}}</td>
+                <td>{{pedido.4}}</td>
+                <td>{{pedido.5}}</td>
+                <td>{{pedido.6}}</td>
+                <td>{{pedido.7}}</td>
+                <td>${{pedido.8}}</td>
+                
+            {% with  pedido.9|checkpedido as tipo %}
+                <td>{{tipo}}</td>
+                {% endwith %}
+           
+            {% with  pedido.10|checkpedido as tipo %}
+                <td>{{tipo}}</td>
+            {% endwith %}
+                
+                <td>{{pedido.11}}</td>
+                <td>
+                    <form action="pedidos" method="get">
+                        <input type="text" value={{pedido.1}} name="id_pedido" id="id">
+                        <button>Editar</button>
+
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+        <div class="form">
+            {% include 'formpedidos.html' %}
+
+        </div>
+
+</body>
+
+</html>

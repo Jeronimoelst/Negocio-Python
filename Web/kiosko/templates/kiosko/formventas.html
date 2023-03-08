@@ -1,0 +1,25 @@
+<h3> Agregar ventas.</h3>
+    {% load tags %} 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/form.css' %}">
+<div>
+    <form action="editarGuadarVentas" method="post">{% csrf_token %} 
+        <input name="id" value="{{venta.0.0}}" style="display:none"/>
+
+             {% with venta.0.1|split:"/" as date %}
+        {{newdate}}
+         <label for="fecha" >Fecha</label>
+        <input type="date" required  id="fecha" name="fecha" placeholder="Fecha" value={{date.2}}-{{date.0}}-{{date.1}}>
+        {% endwith %} 
+
+        <label for="producto" >Producto</label>
+        <input type="text" id="producto" required name="producto" placeholder="Producto" value="{{venta.0.2}}"/>
+
+
+        <label for="cantidad" >Cantidad</label>
+        <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="{{venta.0.3}}"/>
+        
+        <input type="submit" value="Guardar"/> 
+    </form>
+</div>

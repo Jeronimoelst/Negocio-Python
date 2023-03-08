@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>Ventas</title>
+
+    {% load tags %} 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/table.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kiosko/form.css' %}">
+</head>
+
+<body>
+    {% include 'menu.html' %}
+      <div class="form">
+            {% include 'formventas.html' %}
+
+        </div>
+
+</body>
+
+</html>
